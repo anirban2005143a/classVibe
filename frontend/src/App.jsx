@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import UserContext from "./context/userContext";
-import About from "./pages/about";
-import Home from "./pages/home";
+import Home from "./pages/home/home";
 
 function App() {
 
@@ -11,15 +10,7 @@ function App() {
     {
       path: "/",
       element: <Home />
-    },
-    {
-      path: "/about",
-      element: <About />
-    },
-    {
-      path: "/home",
-      element: <Home />
-    },
+    }
   ])
 
   return (
