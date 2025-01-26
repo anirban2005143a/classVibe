@@ -6,7 +6,7 @@ const Home = () => {
     <>
       <div id="home">
         <div id="landingPage" className=' relative overflow-x-hidden w-full h-screen bg-[#fff1e4] ' >
-          <div className='model w-full h-full '>
+          <div className='model w-full h-full flex justify-end'>
             <Three />
             </div>
 

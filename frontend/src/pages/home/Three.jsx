@@ -11,9 +11,14 @@ function App() {
 
     //sizes
     const sizes = {
-      width: window.innerWidth ,
+      width: window.innerWidth,
       height: window.innerHeight
     }
+    console.log(sizes)
+    let modelScale = window.innerWidth / 950;
+    // if (sizes.width / 700 >= 1) modelScale = 0.7
+    // else if (sizes.width / 700 >= 0.7) modelScale = 0.7
+    // else modelScale = sizes.width / 700
 
     //scene
     const scene = new THREE.Scene()
@@ -35,15 +40,15 @@ function App() {
         //add model into scene
         const modelMesh = [...model.scene.children]
         modelMesh.forEach((mesh) => {
-          mesh.rotation.set(0.02 , -0.72 , 0)
-          mesh.scale.set(0.85 , 0.85 , 0.85)
+          mesh.rotation.set(0.02, -0.72, 0)
+          mesh.scale.set(modelScale, modelScale, modelScale)
           // gui.add(mesh.position , "x").min(-2).max(2).step(0.01).name("objectx")
           // gui.add(mesh.position , "y").min(-2).max(2).step(0.01).name("objecty")
           // gui.add(mesh.position , "z").min(-2).max(2).step(0.01).name("objectz")
-          gui.add(mesh.rotation , "x").min(-Math.PI).max(Math.PI).step(0.01).name("object-r-x")
-          gui.add(mesh.rotation , "y").min(-Math.PI).max(Math.PI).step(0.01).name("object-r-y")
-          gui.add(mesh.rotation , "z").min(-Math.PI).max(Math.PI).step(0.01).name("object-r-z")
-          gsap.from(mesh.rotation , {
+          gui.add(mesh.rotation, "x").min(-Math.PI).max(Math.PI).step(0.01).name("object-r-x")
+          gui.add(mesh.rotation, "y").min(-Math.PI).max(Math.PI).step(0.01).name("object-r-y")
+          gui.add(mesh.rotation, "z").min(-Math.PI).max(Math.PI).step(0.01).name("object-r-z")
+          gsap.from(mesh.rotation, {
             duration: 1,
             ease: 'power1.inOut',
             x: "4",
@@ -51,6 +56,14 @@ function App() {
             z: "2"
           })
           scene.add(mesh)
+
+          // window.addEventListener("resize", () => {
+          //   if (window.innerWidth / 700 >= 1) modelScale = 0.8
+          //   else if (window.innerWidth / 700 >= 0.7) modelScale = 0.7
+          //   else modelScale = window.innerWidth / 700
+
+          //   mesh.scale.set(modelScale, modelScale, modelScale)
+          // })
         })
 
       }
@@ -62,17 +75,17 @@ function App() {
 
     //camera
     const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height, 0.1, 1000)
-    camera.position.set(0 , 0 , 3.5)
+    camera.position.set(0, 0, 3.5)
     cameraGroup.add(camera)
     gui.add(camera.position, "x").min(-5).max(5).step(0.1).name("camera-X")
     gui.add(camera.position, "y").min(-5).max(5).step(0.1).name("camera-Y")
     gui.add(camera.position, "z").min(-5).max(5).step(0.1).name("camera-Z")
 
     //lights
-    const color = {color : "#fef0e1"}
-    const directionalLight = new THREE.DirectionalLight("#ffffff", 7 )
+    const color = { color: "#fef0e1" }
+    const directionalLight = new THREE.DirectionalLight("#ffffff", 7)
     directionalLight.color = new THREE.Color(color.color)
-    directionalLight.position.set(0.7,2.7,3.8)
+    directionalLight.position.set(0.7, 2.7, 3.8)
     scene.add(directionalLight)
     // gui.add(directionalLight.position, "x").min(-10).max(10).step(0.1).name("Light-X")
     // gui.add(directionalLight.position, "y").min(-10).max(10).step(0.1).name("Light-y")
@@ -85,11 +98,11 @@ function App() {
     //mouse over
     const cursor = {
       x: 0,
-      y:0,
+      y: 0,
     }
-    window.addEventListener("mousemove" , (e)=>{
-      cursor.x = ((e.clientX/sizes.width) - 0.5) * 0.08
-      cursor.y = ((e.clientY/sizes.height) - 0.5) * 0.08
+    window.addEventListener("mousemove", (e) => {
+      cursor.x = ((e.clientX / sizes.width) - 0.5) * 0.08
+      cursor.y = ((e.clientY / sizes.height) - 0.5) * 0.08
     })
 
     //renderer
@@ -119,10 +132,10 @@ function App() {
       const elaspTime = clock.getElapsedTime()
       const dt = elaspTime - previousTime
       previousTime = elaspTime
-      
+
       //update camera
-      cameraGroup.position.x += (cursor.x - cameraGroup.position.x )* dt * 2
-      cameraGroup.position.y += (cursor.y - cameraGroup.position.y )* dt * 5
+      cameraGroup.position.x += (cursor.x - cameraGroup.position.x) * dt * 2
+      cameraGroup.position.y += (cursor.y - cameraGroup.position.y) * dt * 5
 
       //render 
       renderer.render(scene, camera)
