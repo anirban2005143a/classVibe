@@ -3,7 +3,7 @@ import * as THREE from "three"
 import * as dat from "dat.gui"
 import gsap from 'gsap'
 import { OrbitControls, GLTFLoader, DRACOLoader } from 'three/examples/jsm/Addons.js'
-function App() {
+const  StudyDesk = ()=> {
   // console.log(THREE)
 
   useEffect(() => {
@@ -11,7 +11,7 @@ function App() {
 
     //sizes
     const sizes = {
-      width: Math.min(window.innerWidth , 978),
+      width: window.innerWidth,
       height: window.innerHeight
     }
     console.log(sizes)
@@ -57,13 +57,6 @@ function App() {
           })
           scene.add(mesh)
 
-          // window.addEventListener("resize", () => {
-          //   if (window.innerWidth / 700 >= 1) modelScale = 0.8
-          //   else if (window.innerWidth / 700 >= 0.7) modelScale = 0.7
-          //   else modelScale = window.innerWidth / 700
-
-          //   mesh.scale.set(modelScale, modelScale, modelScale)
-          // })
         })
 
       }
@@ -111,6 +104,10 @@ function App() {
     })
     renderer.setSize(sizes.width, sizes.height)
 
+    //controler
+    const controler = new OrbitControls(camera , canvas)
+    controler.enableDamping = true;
+
     //window resize
     window.addEventListener("resize", () => {
       sizes.width = Math.min(window.innerWidth , 978)
@@ -137,6 +134,9 @@ function App() {
       cameraGroup.position.x += (cursor.x - cameraGroup.position.x) * dt * 2
       cameraGroup.position.y += (cursor.y - cameraGroup.position.y) * dt * 5
 
+      //update controler
+      controler.update()
+
       //render 
       renderer.render(scene, camera)
       window.requestAnimationFrame(tick)
@@ -152,4 +152,4 @@ function App() {
   )
 }
 
-export default App
+export default StudyDesk
