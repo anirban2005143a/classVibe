@@ -33,7 +33,7 @@ function App() {
     const gltfLoader = new GLTFLoader()
     gltfLoader.setDRACOLoader(dracoLoader)
     gltfLoader.load(
-      "/src/assets/studyTable.glb",
+      "/public/studyTable.glb",
       (model) => {
         // console.log(model)
 
