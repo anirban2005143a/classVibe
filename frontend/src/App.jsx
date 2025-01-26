@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import UserContext from "./context/userContext";
 import Home from "./pages/home/home";
+import ImgGen from "./pages/ImgGen/ImgGen";
+import VideoCall from "./pages/videoCall/VideoCall";
 
 function App() {
 
@@ -10,7 +12,15 @@ function App() {
     {
       path: "/",
       element: <Home />
-    }
+    },
+    {
+      path: "/imggen",
+      element: <ImgGen />
+    },
+    {
+      path: "/videoCall",
+      element: <VideoCall />
+    },
   ])
 
   return (

@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import studyDeskImg from "../../assets/studyDesk.png"
 import gsap from 'gsap'
 import Loader from '../../components/loader/Loader'
+import Navbar from '../../components/navbar/Navbar'
 
 const Home = () => {
 
@@ -40,6 +41,7 @@ const Home = () => {
   return (
     <>
       <div id="home">
+        <Navbar/>
         <div id="landingPage" className=' py-7 relative  w-full bg-[#fff1e4] ' >
           <div className='studyDeskImg  py-7  w-full h-full flex justify-end items-center'>
             <div className='md:w-6/12 sm:w-8/12 w-11/12 '>
@@ -90,12 +92,12 @@ const Home = () => {
             </div>
           </div>
         </div>
-        {/* <div className="model studyDesk overflow-x-hidden">
-          <StudyDesk/>
-        </div> */}
 
         <div className="features">
-          
+          <div className="liveClasses"></div>
+          <div className="graphAndChart"></div>
+          <div className="3dModels"></div>
+          <div className="chatBox"></div>
         </div>
       </div>
 
