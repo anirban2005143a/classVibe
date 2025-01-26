@@ -11,11 +11,11 @@ function App() {
 
     //sizes
     const sizes = {
-      width: window.innerWidth,
+      width: Math.min(window.innerWidth , 978),
       height: window.innerHeight
     }
     console.log(sizes)
-    let modelScale = window.innerWidth / 950;
+    let modelScale = window.innerWidth / 1200;
     // if (sizes.width / 700 >= 1) modelScale = 0.7
     // else if (sizes.width / 700 >= 0.7) modelScale = 0.7
     // else modelScale = sizes.width / 700
@@ -113,7 +113,7 @@ function App() {
 
     //window resize
     window.addEventListener("resize", () => {
-      sizes.width = window.innerWidth
+      sizes.width = Math.min(window.innerWidth , 978)
       sizes.height = window.innerHeight
 
       //update camera
@@ -121,7 +121,7 @@ function App() {
       camera.updateProjectionMatrix()
 
       //update render size
-      renderer.setSize(sizes.width, sizes.height)
+      renderer.setSize(978, sizes.height)
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
     })
 
@@ -147,7 +147,7 @@ function App() {
 
   return (
     <>
-      <canvas className="webgl"></canvas>
+      <canvas width={978} className="webgl"></canvas>
     </>
   )
 }

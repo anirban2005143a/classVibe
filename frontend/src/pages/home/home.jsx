@@ -1,20 +1,22 @@
 import React from 'react'
-import Three from './Three'
+// import StudyDesk from './StudyDesk'
+import studyDeskImg from "../../assets/studyDesk.png"
 
 const Home = () => {
+  console.log(window.innerWidth)
   return (
     <>
       <div id="home">
         <div id="landingPage" className=' relative overflow-x-hidden w-full h-screen bg-[#fff1e4] ' >
-          <div className='model w-full h-full flex justify-end'>
-            <Three />
-            </div>
+          <div className='studyDeskImg w-full h-full flex justify-end items-center'>
+            <img src={studyDeskImg} alt="studyDesk" className='md:w-6/12 sm:w-8/12 w-11/12 object-cover ' />
+          </div>
 
           <div className=' absolute w-full h-full top-0 left-0 flex justify-start items-center'>
             <div className=' p-4 md:w-7/12 sm:w-10/12 w-full '>
               <h2 className=' lora text-5xl font-bold'>CLASS VIBE</h2>
               <p className='nunito text-xl'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae numquam pariatur, voluptates sequi nostrum </p>
-             
+
               <button
                 className="relative flex items-center px-6 py-3 overflow-hidden font-medium transition-all bg-indigo-500 rounded-md group"
               >
