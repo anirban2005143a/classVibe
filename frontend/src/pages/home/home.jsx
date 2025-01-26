@@ -10,40 +10,54 @@ const Home = () => {
     gsap.from("#home .introHeading", {
       x: -100,
       opacity: 0,
-      duration: 0.5
+      duration: 0.5,
+      delay: 0.2
     })
     gsap.from("#home .introPara", {
       x: 100,
       opacity: 0,
       duration: 0.5,
-      delay: 0.2
+      delay: 0.4
     })
-    gsap.from("#home .startButton" , {
-      y:100,
-      opacity:0,
-      duration:0.5,
-      delay:0.4
+    gsap.from("#home .startButton", {
+      y: 100,
+      opacity: 0,
+      duration: 0.5,
+      delay: 0.5
     })
-    gsap.from("#home .studyDeskImg" ,{
-      scale:0,
-      duration:0.5
+    gsap.from("#home .studyDeskImg", {
+      scale: 0,
+      duration: 0.5
     })
 
   }, [])
+
+  window.addEventListener("resize", () => {
+    console.log(window.innerWidth)
+  })
 
 
   return (
     <>
       <div id="home">
-        <div id="landingPage" className=' py-7 relative overflow-x-hidden w-full h-screen bg-[#fff1e4] ' >
-          <div className='studyDeskImg  mt-7  w-full h-full flex justify-end items-center'>
-            <img src={studyDeskImg} alt="studyDesk" className='md:w-6/12 sm:w-8/12 w-11/12 object-cover ' />
+        <div id="landingPage" className=' py-7 relative  w-full bg-[#fff1e4] ' >
+          <div className='studyDeskImg  py-7  w-full h-full flex justify-end items-center'>
+            <div className='md:w-6/12 sm:w-8/12 w-11/12 '>
+              <img src={studyDeskImg} alt="studyDesk" className='object-cover w-full' />
+            </div>
           </div>
 
           <div className=' intro absolute w-full h-full top-0 left-0 flex justify-start items-center'>
-            <div className=' p-4 md:w-7/12 sm:w-10/12 w-full '>
-              <h2 className=' introHeading nunito text-5xl font-bold p-4'>CLASS VIBE</h2>
-              <p className='introPara nunito text-xl p-4'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae numquam pariatur, voluptates sequi nostrum </p>
+            <div className=' p-4 md:w-5/12 sm:w-8/12 w-full '>
+              <h2 className=' introHeading nunito text-5xl font-bold p-4'>
+                <span className=' bg-[#fff1e4]'>CLASS VIBE</span>
+              </h2>
+              <p className='introPara nunito text-base p-4'>
+                <span className=' bg-[#fff1e4]'>
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae numquam pariatur, voluptates sequi nostrum
+                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae numquam pariatur, voluptates sequi nostrum
+                </span>
+              </p>
 
               <div className='startButton'>
                 <button

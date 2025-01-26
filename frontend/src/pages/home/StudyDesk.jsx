@@ -108,19 +108,6 @@ const  StudyDesk = ()=> {
     const controler = new OrbitControls(camera , canvas)
     controler.enableDamping = true;
 
-    //window resize
-    window.addEventListener("resize", () => {
-      sizes.width = Math.min(window.innerWidth , 978)
-      sizes.height = window.innerHeight
-
-      //update camera
-      camera.aspect = sizes.width / sizes.height
-      camera.updateProjectionMatrix()
-
-      //update render size
-      renderer.setSize(978, sizes.height)
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-    })
 
     //clock
     const clock = new THREE.Clock()
@@ -147,7 +134,7 @@ const  StudyDesk = ()=> {
 
   return (
     <>
-      <canvas width={978} className="webgl"></canvas>
+      <canvas className="webgl"></canvas>
     </>
   )
 }
