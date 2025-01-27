@@ -26,7 +26,6 @@ const ImgGen = () => {
 
 
         const API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-3.5-large";
-        const API_KEY = "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";
 
 
         try {
