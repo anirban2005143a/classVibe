@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import studyDeskImg from "../../assets/studyDesk.png"
+import studyDeskImg from "../../assets/imgs/studyDesk.png"
 import gsap from 'gsap'
 import Loader from '../../components/loader/Loader'
 import Navbar from '../../components/navbar/Navbar'
@@ -33,16 +33,11 @@ const Home = () => {
 
   }, [])
 
-  window.addEventListener("resize", () => {
-    console.log(window.innerWidth)
-  })
-
-
   return (
     <>
       <div id="home">
         <Navbar/>
-        <div id="landingPage" className=' py-7 relative  w-full bg-[#fff1e4] ' >
+        <div id="landingPage" className=' py-7 relative min-h-screen w-full bg-[#fff1e4] ' >
           <div className='studyDeskImg  py-7  w-full h-full flex justify-end items-center'>
             <div className='md:w-6/12 sm:w-8/12 w-11/12 '>
               <img src={studyDeskImg} alt="studyDesk" className='object-cover w-full' />

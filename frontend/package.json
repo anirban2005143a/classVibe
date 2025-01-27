@@ -12,6 +12,7 @@
   "dependencies": {
     "@azure/msal-browser": "^4.0.2",
     "@azure/msal-react": "^3.0.2",
+    "@huggingface/inference": "^3.1.2",
     "dat.gui": "^0.7.9",
     "gsap": "^3.12.7",
     "js-cookie": "^3.0.5",
