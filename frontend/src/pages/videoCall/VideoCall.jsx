@@ -19,7 +19,7 @@ const VideoCall = () => {
             then((mediaStream) => {
                 document.querySelector("video").srcObject = mediaStream
                 setstream(mediaStream)
-                console.log(mediaStream)
+                // console.log(mediaStream)
             })
     }
 
@@ -30,13 +30,15 @@ const VideoCall = () => {
     }
 
     const joinRoom = ()=>{
-        const roomNo = window.location.pathname.split("?")[1]
+        const roomNo = window.location.href.split("?")[1]
+        console.log(window.location.href)
         socket.emit("joinRoom" , roomNo)
     }
 
     useEffect(() => {
         if (ownerVideoRef.current) {
             startVideo()
+            joinRoom()
         }
     }, [ownerVideoRef.current])
 

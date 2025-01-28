@@ -39,8 +39,8 @@ const Home = () => {
         <Navbar/>
         <div id="landingPage" className=' py-7 relative min-h-screen w-full bg-[#fff1e4] ' >
           <div className='studyDeskImg  py-7  w-full h-full flex justify-end items-center'>
-            <div className='md:w-6/12 sm:w-8/12 w-11/12 '>
-              <img src={studyDeskImg} alt="studyDesk" className='object-cover w-full' />
+            <div className='md:w-6/12 sm:w-8/12 w-11/12 overflow-x-hidden'>
+              <img src={studyDeskImg} alt="studyDesk" className='object-cover h-full' />
             </div>
           </div>
 

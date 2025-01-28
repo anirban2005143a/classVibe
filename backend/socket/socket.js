@@ -1,34 +1,35 @@
 let roomOwners = {};
 
-module.exports = (io) => {
+const socketIo = (io) => {
+
     io.on("connection", (socket) => {
-        console.log(`User connected: ${socket.id}`);
+        console.log(socket.id + " socket id")
 
-        // When a user creates a room
-        socket.on("createRoom", (roomName, peerId) => {
-            if (!roomOwners[roomName]) {
-                roomOwners[roomName] = peerId; // Store the owner's PeerJS ID
-                socket.join(roomName);
-                console.log(`Room ${roomName} created by ${peerId}`);
-            } else {
-                socket.emit("roomExists", "Room already exists!");
+        //create room
+        socket.on("createRoom", (data) => {
+            if (!roomOwners[data.roomNo]) {
+                roomOwners[data.roomNo] = data.peerId
+                socket.join(data.roomNo)
+                socket.emit("roomCreated", "successfully room created")
             }
-        });
+        })
 
-        // When a user joins an existing room
-        socket.on("joinRoom", (roomName) => {
-            if (roomOwners[roomName]) {
-                socket.join(roomName);
-                socket.emit("ownerPeerId", roomOwners[roomName]); // Send owner’s PeerJS ID to the user
-                console.log(`User ${socket.id} joined room ${roomName}`);
-            } else {
-                socket.emit("roomNotFound", "Room does not exist.");
-            }
-        });
+        //join room
+        socket.on("joinRoom", (roomNo) => {
+            // if(roomOwners[data.roomNo]){
+            socket.join(roomNo)
+            // socket.emit("roomOwner", roomOwners[roomNo])
+            console.log("join successfully " + roomNo )
+            // }else{
+            //     socket.emit("roomNotFound" , "Room does not exist")
+            // }
+        })
 
-        // Handle disconnections
-        socket.on("disconnect", () => {
-            console.log(`User ${socket.id} disconnected`);
-        });
-    });
-};
+        //send message
+        socket.on("sendMessage", (data) => {
+            io.to(data.roomNo).emit("message", data.message)
+        })
+    })
+}
+
+module.exports = socketIo
